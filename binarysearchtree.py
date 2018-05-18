@@ -91,13 +91,11 @@ class BinarySearchTree:
         
 
     """
-    Tar bort key om den är en löv (inga barn) med att sätta dess parent löv barn till None
-    Annars ersätts av dess enda barn.
-    Om 2 barn, byts med högra (större värde barn), om den har barn så tar den den längst vänstra löv från key för ersättning
-	   därefter tas den bort med _remove.
-    Specialfall för ensam rot
-
-    Fall för vänster, eller bättre
+    förklaring:
+    Löv, tas bort enkelt
+    Löv en barn ersätts direkt av dess enda barn
+    Löv med 2 barn mest vänstra grenen av sitt högra barn sådan man
+    kan hålla värdet så nära den som tas bort
     """
 
     def _remove(self, v, key, parent, direction):
@@ -116,7 +114,7 @@ class BinarySearchTree:
                 v._key = nkey
                 v._val = nval 
             elif left != None:
-                parent.set_children(left, parent._right)
+                parent.set_children(left, None) # Bugfixed
             else:
             # fall för ensam löv
                 if parent == None:
@@ -133,6 +131,7 @@ class BinarySearchTree:
             if left == None:
                 raise KeyError("Key not present in tree")
             self._remove(left, key, v, "Left")
+       
        
 
     def size(self): # O(totala antal inputs) 
