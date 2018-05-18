@@ -96,6 +96,8 @@ class BinarySearchTree:
     Om 2 barn, byts med högra (större värde barn), om den har barn så tar den den längst vänstra löv från key för ersättning
 	   därefter tas den bort med _remove.
     Specialfall för ensam rot
+
+    Fall för vänster, eller bättre
     """
 
     def _remove(self, v, key, parent, direction):
@@ -179,13 +181,18 @@ class BinarySearchTree:
         
 def main():
     credits = BinarySearchTree()
-    credits.insert('DA3018', 7.5)
+    credits.insert('DA3001', 7.5)
     credits.insert('DA2004', 5)
     credits.insert('DA2003', 10)
     credits.insert('DA2004', 10) # Replacement check
     credits.insert('DA3020', 6)
-    credits.insert('DA3019', 6)
-    credits["DA3030"] = 20
+    credits.insert('DA3015', 6)
+    credits["DA1030"] = 20
+    credits["DA1025"] = 12
+    credits["DA1018"] = 12
+    credits["DA1014"] = 12
+    credits["DA1016"] = 12
+    credits["DA1017"] = 12
     n = credits.size()          # size check
     print(n, "size check")
     hp = credits.find('DA2004') # find check
@@ -194,7 +201,7 @@ def main():
     for course, hp in credits: # Iteration check
         print(course, hp)
 
-    credits.remove('DA3020') # removal check
+    credits.remove('DA1014') # removal check
     m = credits.size()          # size check + removal
 
     print(m)
@@ -202,7 +209,7 @@ def main():
     for course, hp in credits: # Iteration check
         print(course, hp)
 
-    credits.remove("DA3018") # Root removal
+    credits.remove("DA3001") # Root removal
     print("")
     for course, hp in credits: # Iteration check
         print(course, hp)
